@@ -1,9 +1,15 @@
 # ImageToPdf
-Merge images in a single pdf.
+_Merge images in a single pdf._
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C2VFGD)
 
 ## Install
 
-`pip install img2pdf`
+1. Install [Python 3](https://www.python.org/downloads/)
+
+2. Install *img2pdf* dependency:
+
+    `pip install img2pdf`
 
 ## Usage
 
@@ -16,5 +22,5 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   --extension EXTENSION
-                        image extensions to convert
+                        image extension to convert
 ```
