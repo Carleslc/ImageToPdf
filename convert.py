@@ -4,6 +4,7 @@
 import os
 import argparse
 import img2pdf
+import wand.image
 
 def set_args():
     global args
@@ -18,6 +19,14 @@ def files(dir, extension=''):
         if os.path.isfile(path) and file.endswith(extension):
             yield path
 
+def removeAlpha(image_path):
+    with wand.image.Image(filename=image_path) as img:
+        if img.alpha_channel:
+            print('Removing alpha: ' + image_path)
+            img.alpha_channel = 'remove'
+            img.background_color = wand.image.Color('white')        
+            img.save(filename=image_path)
+
 if __name__ == "__main__":
     set_args()
 
@@ -26,9 +35,14 @@ if __name__ == "__main__":
         exit()
 
     image_paths = sorted(list(files(args.directory, args.extension)))
+    for image_path in image_paths:
+        removeAlpha(image_path)
+
     path = os.path.abspath(args.directory + '.pdf')
 
+    imgpdf = img2pdf.convert(image_paths)
+
     with open(path, "wb") as f:
-        f.write(img2pdf.convert(image_paths))
+        f.write(imgpdf)
 
     print('DONE: ' + path)

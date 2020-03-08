@@ -7,9 +7,22 @@ _Merge images in a single pdf._
 
 1. Install [Python 3](https://www.python.org/downloads/)
 
-2. Install *img2pdf* dependency:
+    - (Optional) Use `virtualenv`:
 
-    `pip install img2pdf`
+    ```bash
+    sudo pip install virtualenv
+    virtualenv env
+    . env/bin/activate # Bash/Tcsh console
+    . env/bin/activate.fish # Fish console
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    pip install img2pdf
+    pip install Wand
+    brew install imagemagick
+    ```
 
 ## Usage
 
